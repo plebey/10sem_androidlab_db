@@ -130,7 +130,9 @@ public class DbHandler extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> q2(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        String query = "SELECT name, director, series_number, year FROM "+ TABLE_films+" order by director asc";
+        String query = "SELECT name, director, series_number, year FROM "+ TABLE_films+" " +
+                "where director = 'Данелия' or director = 'Рязанов' or director = 'Гайдай'" +
+                "order by director asc";
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             HashMap<String,String> film = new HashMap<>();
